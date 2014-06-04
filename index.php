@@ -16,8 +16,9 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
 $app = new Silex\Application();
-
 $app['debug'] = TRUE;
+
+
 
 FakeDrupal::setEnabledModules(array(
   'someexamples',
@@ -28,14 +29,13 @@ FakeDrupal::setEnabledThemes(array(
   // 'austin', // Comment/uncomment this line to see effects.
 ));
 
-FakeDrupal::bootstrap();
 
+
+FakeDrupal::bootstrap();
 // Set render manager to use Drupal (will default to looking in ./templates).
 RenderAPI::setRenderManager(new FakeDrupalRenderManager());
 
-/**
- * Twig service provider.
- */
+// Twig service.
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => RenderAPI::getRenderManager()->getWeightedTemplateDirectories(),
   'twig.options' => array(
@@ -190,8 +190,8 @@ $app->get('/', function(Request $request, Application $app) {
         RenderAPI::create('ThemeItemList', array(
         'items' => array(
           '<a href="' . $callback[0] . '">HTML</a>',
-          '<a href="' . $callback[0] . '?path=.">As JSON</a>',
-          '<a href="' . $callback[0] . '?path=.&themed=1">As JSON with template variables</a>',
+          '<a href="' . $callback[0] . '?rendervar=.">As JSON</a>',
+          '<a href="' . $callback[0] . '?rendervar=.&prepare=1">As JSON with template variables</a>',
         ))),
       ));
   }
