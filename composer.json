@@ -8,5 +8,11 @@
         "psr-4": {
             "FakeDrupal\\": "core/lib/FakeDrupal"
         }
-    }
+    },
+    "repositories": [
+        {
+            "url": "git@github.com:c4rl/renderapi",
+            "type": "vcs"
+        }
+    ]
 }
