@@ -2,18 +2,11 @@
     "require": {
         "silex/silex": "~1.2.0",
         "twig/twig": "~1.15.1",
-        "c4rl/renderapi": "dev-3-move-to-a-composer-package"
+        "c4rl/renderapi": "dev-master@dev"
     },
     "autoload": {
         "psr-4": {
-            "RenderAPI\\": "core/lib/RenderAPI",
             "FakeDrupal\\": "core/lib/FakeDrupal"
         }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "http://github.com:cordoval/renderapi.git"
-        }
-    ]
+    }
 }
