@@ -1,8 +1,8 @@
-# Object-Oriented Drupal RenderAPI
+# Object-Oriented (Drupal) RenderAPI
 
 ## Installing
 
-You'll need to download [Silex](http://silex.sensiolabs.org/) via [Composer](http://getcomposer.org/):
+Via [Composer](http://getcomposer.org/):
 
     $> cd path/to/renderapi
     $> curl -sS https://getcomposer.org/installer | php
@@ -12,27 +12,28 @@ You'll need to download [Silex](http://silex.sensiolabs.org/) via [Composer](htt
 
 * ./index.php Shows how some sample renderables are built.
 * This project isn't yet in Drupal core, it's using a skeleton (FakeDrupal) to
-  simulate some of Drupal's behavior and concepts.
+  simulate some of Drupal's behavior and concepts using [Silex](http://silex.sensiolabs.org/)
 * In ./index.php, uncomment the lines within `FakeDrupal::setEnabledModules()`
   and `FakeDrupal::setEnabledThemes()` to see module and theme overrides in
   action. Check out `colorado.module.php` for examples of how alter-like hooks
   can affect builders.
 * Querystring parameters:
-  * `path` delegates the response to return JSON per an accessor-like syntax
+  * `rendervar` delegates the response to return JSON per an accessor-like syntax
     to represent the hierarchical tree of a given renderable. For example:
-    `/node/123?path=.` will return a JSON interpretation of the
-    renderable, while `/node/123?path=node.title` will just return the title
+    `/node/123?rendervar=.` will return a JSON interpretation of the
+    renderable, while `/node/123?rendervar=node.title` will just return the title
     of the node. (This does not yet distinguish sanitized variables).
-  * `themed` provided along with `path` processes the RenderableBuilder as a
+  * `prepare` provided along with `rendervar` processes the RenderableBuilder as a
     Renderable preparing any relevant template variables per the final
     rendered state. For example: if a later preprocessor provides a `subtitle`
     variable to the node template, this can be available via
-    `/node/123?path=subtitle&themed=1`.
+    `/node/123?rendervar=subtitle&prepare=1`.
 
 ## @todo
 
-* Drupal sandbox integration
+* Extract submodule, convert this project into new demo, submit to https://packagist.org
 * Unit tests
+* Drupal sandbox integration
 * Front-end template example
 * Benchmarking
 
@@ -79,5 +80,5 @@ You'll need to download [Silex](http://silex.sensiolabs.org/) via [Composer](htt
 
 ## Acknowledgements
 
-Big thanks to Mark Sonnabaum for OO reality checks and the the Drupal 8 Twig
-team.
+* msonnabaum for OO reality checks
+* jessebeach for realizing the connection to headless Drupal
