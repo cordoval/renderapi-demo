@@ -5,7 +5,6 @@
  */
 
 use RenderAPI\Accessor;
-use RenderAPI\RenderAPI;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 

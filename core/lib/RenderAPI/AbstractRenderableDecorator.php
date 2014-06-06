@@ -18,8 +18,7 @@ abstract class AbstractRenderableDecorator extends AbstractRenderable implements
   /**
    * Sets renderable to decorate.
    *
-   * @param AbstractRenderable
-   * @return void
+   * @param $child AbstractRenderable
    */
   function __construct(AbstractRenderable $child) {
     $this->child = $child;
@@ -36,6 +35,9 @@ abstract class AbstractRenderableDecorator extends AbstractRenderable implements
 
   /**
    * Delegates to child.
+   *
+   * @param mixed key
+   * @param mixed value
    *
    * @return void
    */
